@@ -20,10 +20,10 @@ export function CheatSheetPanel({ open, onOpenChange }: CheatSheetPanelProps) {
         <SheetHeader>
           <SheetTitle className="text-xl font-bold">Pool Cheat Sheet</SheetTitle>
           <div className="flex gap-2 mt-2">
-            <Button variant="outline" size="sm" disabled>
+            <Button variant="outline" size="sm" disabled title="Coming soon: simplified view">
               Simplify
             </Button>
-            <Button variant="outline" size="sm" disabled>
+            <Button variant="outline" size="sm" disabled title="Coming soon: text-to-speech">
               🔊 Read Aloud
             </Button>
           </div>

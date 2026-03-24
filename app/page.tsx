@@ -11,6 +11,7 @@ import { CheatSheetPanel } from '@/components/CheatSheetPanel';
 import { useReadingsStore } from '@/store/useReadingsStore';
 import { exportToCSV } from '@/lib/export';
 import { getFieldStatus } from '@/lib/warnings';
+import { formatReadingDate } from '@/lib/utils';
 import { ReadingStatus } from '@/types';
 
 function getOverallStatus(warnings: { level: string }[]): ReadingStatus {
@@ -56,7 +57,7 @@ export default function DashboardPage() {
           {latest ? (
             <>
               <p className="text-xs text-muted-foreground mb-3">
-                Recorded: {new Date(latest.date).toLocaleDateString('en-AU', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                Recorded: {formatReadingDate(latest.date, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
               <div className="grid grid-cols-2 gap-3">
                 <StatusCard
@@ -139,11 +140,7 @@ export default function DashboardPage() {
                     <CardContent className="p-4 flex items-center justify-between">
                       <div>
                         <p className="font-medium">
-                          {new Date(reading.date).toLocaleDateString('en-AU', {
-                            weekday: 'short',
-                            day: 'numeric',
-                            month: 'short',
-                          })}
+                          {formatReadingDate(reading.date)}
                         </p>
                         <p className="text-sm text-muted-foreground">
                           Cl: {reading.chlorine} | pH: {reading.ph} | Alk: {reading.alkalinity}
